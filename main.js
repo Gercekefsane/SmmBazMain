@@ -227,30 +227,6 @@ if (filterServicesInput) {
     });
 }
 
-const orderTicket = document.querySelectorAll('.order-ticket');
-if (orderTicket) {
-    [...orderTicket].forEach(el => {
-        el.addEventListener('submit', e => {
-            e.preventDefault();
-            let data = $('.order-ticket[data-id="' + el.dataset.id + '"]').serialize();
-
-            $.ajax({
-                url: 'https://cloutsy.com/ticket-create',
-                type: 'POST',
-                data: data,
-                success: function (e) {
-                    if (e.status == 'error') {
-                        $('.ticket-response[data-id="' + el.dataset.id + '"]').html('<div class="alert alert-danger">' + e.error + '</div>');
-                    } else {
-                        $('.ticket-response[data-id="' + el.dataset.id + '"]').html("<div class=\"alert alert-success\">Your request has been received.</div>");
-                    }
-                    $('.ticket-response[data-id="' + el.dataset.id + '"]').addClass('active');
-                }
-            });
-
-        });
-    });
-}
 
 $("#orderform-service").change(function () {
     service_id = $(this).val();
@@ -348,15 +324,6 @@ if (devModeDoms[0]) {
 }
 
 
-
-if (newOrderCats) {
-    const swiper = new Swiper('#new-order-cats', {
-        slidesPerView: "auto",
-        spaceBetween: 14,
-        mousewheel: {
-            invert: true,
-        },
-    });
 
     const orderFormCats = document.getElementById('orderform-category');
     var realData = orderFormCats.innerHTML;
