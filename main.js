@@ -357,22 +357,3 @@ if (devModeDoms[0]) {
                 $('#orderform-category').trigger('change');
             });
         })
-    }
-
-    /**
-     * copy order form data hidden
-     */
-    setTimeout(() => {
-        const orderFormCopy = document.createElement('select');
-        orderFormCopy.setAttribute('id', 'orderform-category-copy');
-        orderFormCopy.style.display = 'none';
-        orderFormCopy.innerHTML = realData;
-        orderFormCats.parentNode.insertBefore(orderFormCopy, orderFormCats);
-    }, 2000)
-
-    const nocWrapper = document.getElementById('noc-wrapper');
-    nocWrapper.style.display = 'none';
-    setTimeout(() => {
-        nocWrapper.style.display = 'block';
-    }, 2001);
-}
