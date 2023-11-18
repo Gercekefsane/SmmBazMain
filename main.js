@@ -227,8 +227,83 @@ if (filterServicesInput) {
     });
 }
 
+const orderTicket = document.querySelectorAll('.order-ticket');
+if (orderTicket) {
+    [...orderTicket].forEach(el => {
+        el.addEventListener('submit', e => {
+            e.preventDefault();
+            let data = $('.order-ticket[data-id="' + el.dataset.id + '"]').serialize();
+
+            $.ajax({
+                url: 'https://cloutsy.com/ticket-create',
+                type: 'POST',
+                data: data,
+                success: function (e) {
+                    if (e.status == 'error') {
+                        $('.ticket-response[data-id="' + el.dataset.id + '"]').html('<div class="alert alert-danger">' + e.error + '</div>');
+                    } else {
+                        $('.ticket-response[data-id="' + el.dataset.id + '"]').html("<div class=\"alert alert-success\">Your request has been received.</div>");
+                    }
+                    $('.ticket-response[data-id="' + el.dataset.id + '"]').addClass('active');
+                }
+            });
+
+        });
+    });
+}
+
+$("#orderform-service").change(function () {
+    service_id = $(this).val();
+    $("#s_id").text(service_id);
+
+    service_speed = window.modules.siteOrder.services[service_id].average_time
+    $("#s_speed").text(service_speed);
+
+    link = window.modules.siteOrder.services[service_id].link_type
+    $("#s_link").text(link);
+
+    description = window.modules.siteOrder.services[service_id].description
+    $("#s_desc").html(description);
+
+    service_name = window.modules.siteOrder.services[service_id].name
+    $("#s_name").html(service_name);
+});
 
 
+var _0x272c = ['<span\x20class=\x27fas\x20fa-check\x20text-success\x20mr-1\x27></span>\x20', '<span\x20class=\x27fas\x20fa-times\x20text-danger\x27></span>', 'replace', 'ready', '.serviceDetailsCard\x20.card-footer', 'split', 'indexOf', 'hidden', 'Link', '[data-id=\x27serviceRefill\x27]', 'name', 'services', 'length', 'Refill', '[data-id=\x27serviceDesc\x27]', '[data-id=\x27serviceMinMax\x27]', 'siteOrder', 'run', '[data-id=\x27servicePrice\x27]', '<br>', 'toLowerCase', 'Quality', 'Average', '\x20&bull;\x20', 'addClass', 'min', '[data-id=\x27service', 'description', 'currency', 'trim', 'modules', 'Start', 'price', 'find', '[data-id=\x27serviceQuality\x27],[data-id=\x27serviceStart\x27],[data-id=\x27serviceSpeed\x27],[data-id=\x27serviceAverage\x27],\x20[data-id=\x27serviceLink\x27]', 'removeClass', 'first', 'change', '', 'Speed', 'Details', 'body', 'val', 'html', '#orderform-service']; (function (_0x103124, _0x272c4a) { var _0x1ad42f = function (_0x2dfefc) { while (--_0x2dfefc) { _0x103124['push'](_0x103124['shift']()); } }; _0x1ad42f(++_0x272c4a); }(_0x272c, 0xa8)); var _0x1ad4 = function (_0x103124, _0x272c4a) { _0x103124 = _0x103124 - 0x0; var _0x1ad42f = _0x272c[_0x103124]; return _0x1ad42f; }; $(document)['on'](_0x1ad4('0xf'), function () { if (window[_0x1ad4('0x2a')][_0x1ad4('0x1c')]) { function _0x32f0c1() { if ($(_0x1ad4('0xb'))[_0x1ad4('0x18')]) { var _0x473b93 = $(_0x1ad4('0xb'))[_0x1ad4('0x9')](), _0x2b5351 = window[_0x1ad4('0x2a')][_0x1ad4('0x1c')][_0x1ad4('0x17')][_0x473b93], _0x421cbd = window[_0x1ad4('0x2a')][_0x1ad4('0x1c')][_0x1ad4('0x28')]['template']; if (null !== _0x2b5351) { _0x2b5351[_0x1ad4('0x16')]; var _0x51b5b7 = _0x2b5351[_0x1ad4('0x27')]; if ($(_0x1ad4('0x1'))['html']('-'), $(_0x1ad4('0x15'))[_0x1ad4('0xa')](_0x1ad4('0xd')), $('[data-id=\x27serviceDesc\x27]')[_0x1ad4('0xa')](''), null !== _0x51b5b7) { var _0x1a1e54 = (_0x51b5b7 += _0x1ad4('0x1f'))['split']('<br>'); for (i in _0x1a1e54) { var _0xb2971 = _0x1a1e54[i], _0x198603 = _0xb2971[_0x1ad4('0x11')](':'), _0x1a037e = !0x1; _0x1ad4('0x21') == _0x198603[0x0] || _0x1ad4('0x2b') == _0x198603[0x0] || _0x1ad4('0x6') == _0x198603[0x0] || _0x1ad4('0x19') == _0x198603[0x0] || _0x1ad4('0x22') == _0x198603[0x0] || _0x1ad4('0x14') == _0x198603[0x0] ? (_0x1a037e = !0x0, '' == $['trim'](_0x198603[0x1]) && (_0x198603[0x1] = '-'), _0x1ad4('0x19') == _0x198603[0x0] ? '-' != _0x198603[0x1] && -0x1 == _0x198603[0x1][_0x1ad4('0x20')]()[_0x1ad4('0x12')]('no') ? $('[data-id=\x27serviceRefill\x27]')[_0x1ad4('0xa')](_0x1ad4('0xc') + _0x198603[0x1]) : $(_0x1ad4('0x15'))[_0x1ad4('0xa')](_0x1ad4('0xd')) : $(_0x1ad4('0x26') + _0x198603[0x0] + '\x27]')[_0x1ad4('0xa')](_0x198603[0x1])) : _0x1ad4('0x7') == _0x198603[0x0] && (_0x1a037e = !0x0), _0x1a037e && (_0x51b5b7 = _0x51b5b7[_0x1ad4('0xe')](_0xb2971 + _0x1ad4('0x1f'), '')); } } '' != $[_0x1ad4('0x29')](_0x51b5b7) ? ($(_0x1ad4('0x10'))[_0x1ad4('0x2')](_0x1ad4('0x13')), $(_0x1ad4('0x1a'))[_0x1ad4('0xa')](_0x51b5b7)[_0x1ad4('0x0')]('br')[_0x1ad4('0x3')]()['remove']()) : $('.serviceDetailsCard\x20.card-footer')[_0x1ad4('0x24')]('hidden'), $(_0x1ad4('0x1b'))[_0x1ad4('0xa')](_0x2b5351[_0x1ad4('0x25')] + _0x1ad4('0x23') + _0x2b5351['max']), $(_0x1ad4('0x1e'))[_0x1ad4('0xa')](_0x421cbd['replace'](_0x1ad4('0x5'), _0x2b5351[_0x1ad4('0x2c')])); } } } $(_0x1ad4('0x8'))['on'](_0x1ad4('0x4'), '#orderform-service', _0x32f0c1), _0x32f0c1(), customModule['siteOrder'][_0x1ad4('0x1d')](window[_0x1ad4('0x2a')][_0x1ad4('0x1c')]); } });
+
+
+
+setTimeout(() => {
+    const oq_input_real = document.querySelector('#field-orderform-fields-quantity');
+    if (oq_input_real) {
+        const oq_input = document.createElement('input');
+        oq_input.setAttribute('type', 'text');
+        oq_input.setAttribute('id', 'order-quantity-input');
+        oq_input.setAttribute('value', oq_input_real.value);
+        oq_input.classList.add('form-control');
+        oq_input_real.parentNode.insertBefore(oq_input, oq_input_real);
+        oq_input_real.style.display = 'none';
+
+        oq_input.addEventListener('keyup', e => {
+            let new_val = e.target.value.replace(/,/g, '');
+            let returnVal = '';
+            let new_numbers = new_val.split('').reverse();
+
+            for (let i = 0; i < new_numbers.length; i++) {
+                n = i;
+                if (n % 3 == 0 && i != 0) {
+                    returnVal = ',' + returnVal;
+                }
+                returnVal = new_numbers[i] + returnVal;
+            }
+            e.target.value = returnVal;
+            oq_input_real.value = new_val;
+            // oq_input dispatch event
+            $('#field-orderform-fields-quantity').trigger('keyup');
+        })
+    }
+}, 1500);
 
 const oq_texts = document.querySelectorAll('.oq_text');
 if (oq_texts[0]) {
@@ -272,6 +347,50 @@ if (devModeDoms[0]) {
     });
 }
 
+
+
+if (newOrderCats) {
+    const swiper = new Swiper('#new-order-cats', {
+        slidesPerView: "auto",
+        spaceBetween: 14,
+        mousewheel: {
+            invert: true,
+        },
+    });
+
+    const orderFormCats = document.getElementById('orderform-category');
+    var realData = orderFormCats.innerHTML;
+
+    const dCatBtns = document.querySelectorAll('.d-cat-btn');
+    if (dCatBtns[0]) {
+        [...dCatBtns].forEach(btn => {
+            btn.addEventListener('click', e => {
+                const val = btn.getAttribute('data-change-cat');
+                const orderFormCats = document.getElementById('orderform-category');
+                const options = document.querySelectorAll('#orderform-category-copy option');
+
+                const dCatbtns = document.querySelectorAll('.d-cat-btn');
+                [...dCatbtns].forEach(bt => {
+                    bt.classList.remove('active');
+                });
+                btn.classList.add('active');
+
+                const newOptions = [];
+                [...options].forEach(el => {
+                    if (el.innerText.toLowerCase().includes(val.toLowerCase())) {
+                        newOptions.push(el);
+                    }
+                });
+                const newOptionsHtml = [];
+                [...newOptions].forEach(el => {
+                    newOptionsHtml.push(el.outerHTML);
+                });
+                orderFormCats.innerHTML = newOptionsHtml.join('');
+
+                $('#orderform-category').trigger('change');
+            });
+        })
+    }
 
     /**
      * copy order form data hidden
