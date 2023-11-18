@@ -325,6 +325,14 @@ if (devModeDoms[0]) {
 
 
 
+if (newOrderCats) {
+    const swiper = new Swiper('#new-order-cats', {
+        slidesPerView: "auto",
+        spaceBetween: 14,
+        mousewheel: {
+            invert: true,
+        },
+    });
 
     const orderFormCats = document.getElementById('orderform-category');
     var realData = orderFormCats.innerHTML;
@@ -376,3 +384,4 @@ if (devModeDoms[0]) {
     setTimeout(() => {
         nocWrapper.style.display = 'block';
     }, 2001);
+}
